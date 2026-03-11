@@ -2,7 +2,8 @@
 
 A premium, interactive web application that displays real-time clocks and weather for multiple cities (Porto, Tehran, Toronto) alongside a versatile tally counter.
 
-![Time & Tally Screenshot](screenshot.png) <!-- Optional: Add a screenshot of the app here later -->
+Time & Tally Screenshot
+https://time-counter-app-2026.surge.sh/
 
 ## Features
 
