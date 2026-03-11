@@ -1,0 +1,365 @@
+:root {
+  --primary: #8b5cf6;
+  --primary-glow: rgba(139, 92, 246, 0.4);
+  --secondary: #ec4899;
+  --bg-color: #0f172a;
+  --glass-bg: rgba(30, 41, 59, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+  --accent-cyan: #06b6d4;
+  --accent-teal: #14b8a6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Animated Gradient Background */
+.background-animation {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15), transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.15), transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(6, 182, 212, 0.1), transparent 50%);
+  animation: bgRoam 25s infinite alternate ease-in-out;
+  z-index: -1;
+}
+
+@keyframes bgRoam {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-3%, 2%) scale(1.05); }
+  100% { transform: translate(3%, -4%) scale(1.1); }
+}
+
+/* Mobile App Container */
+.app-container {
+  width: 100%;
+  max-width: 440px;
+  height: 100vh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  position: relative;
+  z-index: 1;
+}
+
+.app-container::-webkit-scrollbar {
+  display: none; /* Safari/Chrome */
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  box-shadow: var(--card-shadow);
+  padding: 24px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Header */
+.app-header {
+  text-align: center;
+  padding: 18px 24px;
+  border-radius: 24px;
+  animation: fadeDown 0.8s ease-out forwards;
+}
+
+.app-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #fff, #cbd5e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #a78bfa;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Clocks Section */
+.clocks-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.clock-card {
+  padding: 20px 24px;
+  border-radius: 24px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.city-info h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: 0.5px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.location ion-icon {
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.temp-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #38bdf8;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+.temp-badge ion-icon {
+  font-size: 14px;
+}
+
+.time-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 2px;
+  text-shadow: 0 0 24px rgba(255,255,255,0.15);
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.time-display .seconds {
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--text-muted);
+}
+
+/* Counter Section */
+.counter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  animation: fadeUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+  padding: 32px 24px;
+  margin-bottom: 24px;
+}
+
+.counter-display {
+  text-align: center;
+  position: relative;
+}
+
+.counter-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.counter-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 84px;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 30px rgba(255,255,255,0.1);
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-block;
+}
+
+.counter-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 20px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn ion-icon {
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn:hover ion-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), #a855f7);
+  color: white;
+  box-shadow: 0 8px 25px var(--primary-glow);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.3), rgba(255,255,255,0));
+  transform: skewX(-25deg);
+  animation: shine 4s infinite;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #7c3aed, var(--primary));
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.5);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #f43f5e, #e11d48);
+  color: white;
+  box-shadow: 0 8px 25px rgba(244, 63, 94, 0.4);
+}
+
+.btn-danger::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.3), rgba(255,255,255,0));
+  transform: skewX(-25deg);
+  animation: shine 4s infinite;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #be123c, #f43f5e);
+  box-shadow: 0 12px 30px rgba(225, 29, 72, 0.5);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fca5a5;
+}
+
+.btn-secondary:hover ion-icon {
+  color: #ef4444;
+  transform: rotate(-180deg);
+}
+
+/* Animations */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+/* Enhancing Responsive View */
+@media (max-width: 380px) {
+  .app-container { padding: 16px; }
+  .time-display { font-size: 30px; }
+  .counter-value { font-size: 72px; }
+}

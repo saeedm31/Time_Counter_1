@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time & Tally - Premium Mobile App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="background-animation"></div>
+  
+  <main class="app-container">
+    <header class="app-header glass-card">
+      <h1>Global Link</h1>
+      <p class="subtitle">Time & Tally Tracker</p>
+    </header>
+
+    <section class="clocks-grid">
+      <!-- Porto -->
+      <div class="glass-card clock-card">
+        <div class="card-header">
+          <div class="city-info">
+            <h2>Porto</h2>
+            <span class="location"><ion-icon name="location-outline"></ion-icon> Portugal</span>
+          </div>
+          <div class="temp-badge" id="temp-porto">
+            <ion-icon name="thermometer-outline"></ion-icon> <span class="temp-val">--</span>°C
+          </div>
+        </div>
+        <div class="time-display" id="time-porto">--:--<span class="seconds">:--</span></div>
+      </div>
+
+      <!-- Tehran -->
+      <div class="glass-card clock-card">
+        <div class="card-header">
+          <div class="city-info">
+            <h2>Tehran</h2>
+            <span class="location"><ion-icon name="location-outline"></ion-icon> Iran</span>
+          </div>
+          <div class="temp-badge" id="temp-tehran">
+            <ion-icon name="thermometer-outline"></ion-icon> <span class="temp-val">--</span>°C
+          </div>
+        </div>
+        <div class="time-display" id="time-tehran">--:--<span class="seconds">:--</span></div>
+      </div>
+
+      <!-- Toronto -->
+      <div class="glass-card clock-card" id="cl-toronto">
+        <div class="card-header">
+          <div class="city-info">
+            <h2>Toronto</h2>
+            <span class="location"><ion-icon name="location-outline"></ion-icon> Canada</span>
+          </div>
+          <div class="temp-badge" id="temp-toronto">
+            <ion-icon name="thermometer-outline"></ion-icon> <span class="temp-val">--</span>°C
+          </div>
+        </div>
+        <div class="time-display" id="time-toronto">--:--<span class="seconds">:--</span></div>
+      </div>
+    </section>
+
+    <section class="counter-section glass-card">
+      <div class="counter-display">
+        <span class="counter-label">Current Count</span>
+        <div class="counter-value" id="counter-value">0</div>
+      </div>
+      <div class="counter-controls">
+        <button class="btn btn-primary" id="btn-count-up">
+          <ion-icon name="add-circle-outline"></ion-icon> Count Up
+        </button>
+        <button class="btn btn-danger" id="btn-count-down">
+          <ion-icon name="remove-circle-outline"></ion-icon> Count Down
+        </button>
+        <button class="btn btn-secondary" id="btn-reset">
+          <ion-icon name="refresh-outline"></ion-icon> Reset Counter
+        </button>
+      </div>
+    </section>
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>
